@@ -1,16 +1,21 @@
+
 name: EL Practical Workflow
+
 on:
- push:
-   workflow_dispatch:
-     jobs:
-verify-docs:
-  runs-on: ubuntu-latest
-steps:
-     - name: Check out repository
-      uses: actions/checkout@v4
-     - name: Verify documentation files
-run: 
-| 
-test -f README.md test -f CODE_OF_CONDUCT.md
-test -f docs/index.md
-echo "Required documentation files exist."
+  push:
+  workflow_dispatch:
+
+jobs:
+  verify-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Verify documentation files
+        run: |
+          test -f README.md
+          test -f CODE_OF_CONDUCT.md
+          test -f docs/index.md
+          echo "Required documentation files exist."
